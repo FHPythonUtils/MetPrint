@@ -2,6 +2,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.3 - 2020/03/26
+- Colour improvements to MeterpreterFormatter, FHFormatter, FHNFFormatter,
+XaFormatter and LamuFormatter
+
 ## 2020.2 - 2020/03/26
 - Added FHNFFormatter
 - Updated readme

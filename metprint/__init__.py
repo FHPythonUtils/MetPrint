@@ -46,12 +46,12 @@ class MeterpreterFormatter():
 			LogType.BOLD    : "\033[01m{}\033[00m",
 			LogType.ITALIC  : "\033[03m{}\033[00m",
 			LogType.HEADER  : "\033[01m\033[04m{}\033[00m",
-			LogType.DEBUG   : "\033[96m[$]\033[00m {}",
-			LogType.INFO    : "\033[96m[*]\033[00m {}",
-			LogType.SUCCESS : "\033[92m[+]\033[00m {}",
-			LogType.WARNING : "\033[93m[/]\033[00m {}",
-			LogType.ERROR   : "\033[91m[-]\033[00m {}",
-			LogType.CRITICAL: "\033[91m[!]\033[00m {}",
+			LogType.DEBUG   : "\033[01m\033[96m[$]\033[00m {}",
+			LogType.INFO    : "\033[01m\033[36m[*]\033[00m {}",
+			LogType.SUCCESS : "\033[01m\033[32m[+]\033[00m {}",
+			LogType.WARNING : "\033[01m\033[33m[/]\033[00m {}",
+			LogType.ERROR   : "\033[01m\033[31m[-]\033[00m {}",
+			LogType.CRITICAL: "\033[01m\033[91m[!]\033[00m {}",
 		}
 
 class FHFormatter():
@@ -63,10 +63,10 @@ class FHFormatter():
 			LogType.ITALIC  : "\033[03m{}\033[00m",
 			LogType.HEADER  : "\033[01m\033[04m{}\033[00m",
 			LogType.DEBUG   : "[\033[01m\033[96m$  Deb\033[00m] {}",
-			LogType.INFO    : "[\033[96m* Info\033[00m] {}",
-			LogType.SUCCESS : "[\033[92m+   Ok\033[00m] {}",
-			LogType.WARNING : "[\033[93m/ Warn\033[00m] {}",
-			LogType.ERROR   : "[\033[91m-  Err\033[00m] {}",
+			LogType.INFO    : "[\033[36m* Info\033[00m] {}",
+			LogType.SUCCESS : "[\033[32m+   Ok\033[00m] {}",
+			LogType.WARNING : "[\033[33m/ Warn\033[00m] {}",
+			LogType.ERROR   : "[\033[31m-  Err\033[00m] {}",
 			LogType.CRITICAL: "[\033[01m\033[91m! Crit\033[00m] {}",
 		}
 
@@ -79,10 +79,10 @@ class FHNFFormatter():
 			LogType.ITALIC  : "\033[03m{}\033[00m",
 			LogType.HEADER  : "\033[01m\033[04m{}\033[00m",
 			LogType.DEBUG   : "[\033[01m\033[96m\uf46f  Deb\033[00m] {}",
-			LogType.INFO    : "[\033[96m\uf449 Info\033[00m] {}",
-			LogType.SUCCESS : "[\033[92m\uf42e   Ok\033[00m] {}",
-			LogType.WARNING : "[\033[93m\uf467 Warn\033[00m] {}",
-			LogType.ERROR   : "[\033[91m\uf46e  Err\033[00m] {}",
+			LogType.INFO    : "[\033[36m\uf449 Info\033[00m] {}",
+			LogType.SUCCESS : "[\033[32m\uf42e   Ok\033[00m] {}",
+			LogType.WARNING : "[\033[33m\uf467 Warn\033[00m] {}",
+			LogType.ERROR   : "[\033[31m\uf46e  Err\033[00m] {}",
 			LogType.CRITICAL: "[\033[01m\033[91m\uf421 Crit\033[00m] {}",
 		}
 
@@ -148,13 +148,13 @@ class XaFormatter():
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "\033[01m{}\033[00m",
 			LogType.ITALIC  : "\033[03m{}\033[00m",
-			LogType.HEADER  : "\033[40m\033[93m TITLE \033[00m {}",
-			LogType.DEBUG   : "\033[106m DEBUG \033[00m {}",
-			LogType.INFO    : "\033[106m INFO \033[00m {}",
-			LogType.SUCCESS : "\033[102m\033[30m SUCCESS \033[00m {}",
-			LogType.WARNING : "\033[103m\033[30m WARNING \033[00m {}",
-			LogType.ERROR   : "\033[101m ERROR \033[00m {}",
-			LogType.CRITICAL: "\033[101m CRITICAL \033[00m {}",
+			LogType.HEADER  : "\033[01m\033[40m\033[93m TITLE \033[00m {}",
+			LogType.DEBUG   : "\033[01m\033[106m\033[30m DEBUG \033[00m {}",
+			LogType.INFO    : "\033[01m\033[46m\033[30m INFO \033[00m {}",
+			LogType.SUCCESS : "\033[01m\033[42m\033[30m SUCCESS \033[00m {}",
+			LogType.WARNING : "\033[01m\033[43m\033[30m WARNING \033[00m {}",
+			LogType.ERROR   : "\033[01m\033[41m\033[30m ERROR \033[00m {}",
+			LogType.CRITICAL: "\033[01m\033[101m\033[30m CRITICAL \033[00m {}",
 		}
 
 class LamuFormatter():
@@ -168,10 +168,10 @@ class LamuFormatter():
 			LogType.ITALIC  : "\033[03m{}\033[00m",
 			LogType.HEADER  : "\033[01m\033[04m{}\033[00m",
 			LogType.DEBUG   : "\033[96m   debug\033[00m  : :  {}",
-			LogType.INFO    : "\033[96m    info\033[00m  : :  {}",
-			LogType.SUCCESS : "\033[92m success\033[00m  : :  {}",
-			LogType.WARNING : "\033[93m warning\033[00m  : :  {}",
-			LogType.ERROR   : "\033[91m   error\033[00m  : :  {}",
+			LogType.INFO    : "\033[36m    info\033[00m  : :  {}",
+			LogType.SUCCESS : "\033[32m success\033[00m  : :  {}",
+			LogType.WARNING : "\033[33m warning\033[00m  : :  {}",
+			LogType.ERROR   : "\033[31m   error\033[00m  : :  {}",
 			LogType.CRITICAL: "\033[91mcritical\033[00m  : :  {}",
 		}
 
@@ -203,8 +203,8 @@ class CustomFormatter():
 	def __init__(self, none="{}", bold="\033[01m{}\033[00m",
 	italic="\033[03m{}\033[00m", header="\033[01m\033[04m{}\033[00m",
 	debug="[\033[01m\033[96m$  Deb\033[00m] {}",
-	info="[\033[96m* Info\033[00m] {}", success="[\033[92m+   Ok\033[00m] {}",
-	warning="[\033[93m/ Warn\033[00m] {}", error="[\033[91m-  Err\033[00m] {}",
+	info="[\033[36m* Info\033[00m] {}", success="[\033[32m+   Ok\033[00m] {}",
+	warning="[\033[33m/ Warn\033[00m] {}", error="[\033[31m-  Err\033[00m] {}",
 	critical="[\033[01m\033[91m! Crit\033[00m] {}"):
 		self.format = {
 			LogType.NONE: none,
