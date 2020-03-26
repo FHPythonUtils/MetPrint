@@ -5,6 +5,7 @@ from metprint import (
 	Logger,
 	MeterpreterFormatter,
 	FHFormatter,
+	FHNFFormatter,
 	PythonFormatter,
 	ColorLogFormatter,
 	PrintTagsFormatter,
@@ -44,6 +45,21 @@ fhLogger.logPrint("success", LogType.SUCCESS)
 fhLogger.logPrint("warning", LogType.WARNING)
 fhLogger.logPrint("error", LogType.ERROR)
 fhLogger.logPrint("critical", LogType.CRITICAL)
+
+print("#########################")
+print("#         FHNF          #")
+print("#########################")
+fhnfLogger = Logger(FHNFFormatter())
+fhnfLogger.logPrint("none", LogType.NONE)
+fhnfLogger.logPrint("bold", LogType.BOLD)
+fhnfLogger.logPrint("italic", LogType.ITALIC)
+fhnfLogger.logPrint("header", LogType.HEADER)
+fhnfLogger.logPrint("debug", LogType.DEBUG)
+fhnfLogger.logPrint("info", LogType.INFO)
+fhnfLogger.logPrint("success", LogType.SUCCESS)
+fhnfLogger.logPrint("warning", LogType.WARNING)
+fhnfLogger.logPrint("error", LogType.ERROR)
+fhnfLogger.logPrint("critical", LogType.CRITICAL)
 
 print("#########################")
 print("#        Python         #")

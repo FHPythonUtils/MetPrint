@@ -46,7 +46,7 @@ class MeterpreterFormatter():
 			LogType.BOLD    : "\033[01m{}\033[00m",
 			LogType.ITALIC  : "\033[03m{}\033[00m",
 			LogType.HEADER  : "\033[01m\033[04m{}\033[00m",
-			LogType.DEBUG   : "\033[96m[*]\033[00m {}",
+			LogType.DEBUG   : "\033[96m[$]\033[00m {}",
 			LogType.INFO    : "\033[96m[*]\033[00m {}",
 			LogType.SUCCESS : "\033[92m[+]\033[00m {}",
 			LogType.WARNING : "\033[93m[/]\033[00m {}",
@@ -62,12 +62,28 @@ class FHFormatter():
 			LogType.BOLD    : "\033[01m{}\033[00m",
 			LogType.ITALIC  : "\033[03m{}\033[00m",
 			LogType.HEADER  : "\033[01m\033[04m{}\033[00m",
-			LogType.DEBUG   : "[\033[01m\033[96m*  Deb\033[00m] {}",
+			LogType.DEBUG   : "[\033[01m\033[96m$  Deb\033[00m] {}",
 			LogType.INFO    : "[\033[96m* Info\033[00m] {}",
 			LogType.SUCCESS : "[\033[92m+   Ok\033[00m] {}",
 			LogType.WARNING : "[\033[93m/ Warn\033[00m] {}",
 			LogType.ERROR   : "[\033[91m-  Err\033[00m] {}",
 			LogType.CRITICAL: "[\033[01m\033[91m! Crit\033[00m] {}",
+		}
+
+class FHNFFormatter():
+	'''Format text in my own style with nerd fonts'''
+	def __init__(self):
+		self.format = {
+			LogType.NONE    : "{}",
+			LogType.BOLD    : "\033[01m{}\033[00m",
+			LogType.ITALIC  : "\033[03m{}\033[00m",
+			LogType.HEADER  : "\033[01m\033[04m{}\033[00m",
+			LogType.DEBUG   : "[\033[01m\033[96m\uf46f  Deb\033[00m] {}",
+			LogType.INFO    : "[\033[96m\uf449 Info\033[00m] {}",
+			LogType.SUCCESS : "[\033[92m\uf42e   Ok\033[00m] {}",
+			LogType.WARNING : "[\033[93m\uf467 Warn\033[00m] {}",
+			LogType.ERROR   : "[\033[91m\uf46e  Err\033[00m] {}",
+			LogType.CRITICAL: "[\033[01m\033[91m\uf421 Crit\033[00m] {}",
 		}
 
 class PythonFormatter():
@@ -172,7 +188,7 @@ class CustomFormatter():
 		header (str, optional): Set format for LogType.HEADER.
 		Defaults to "\033[01m\033[04m{}\033[00m".
 		debug (str, optional): Set format for LogType.DEBUG.
-		Defaults to "[\033[01m\033[96m*  Deb\033[00m] {}".
+		Defaults to "[\033[01m\033[96m$  Deb\033[00m] {}".
 		info (str, optional): Set format for LogType.INFO.
 		Defaults to "[\033[96m* Info\033[00m] {}".
 		success (str, optional): Set format for LogType.SUCCESS.
@@ -186,7 +202,7 @@ class CustomFormatter():
 	"""
 	def __init__(self, none="{}", bold="\033[01m{}\033[00m",
 	italic="\033[03m{}\033[00m", header="\033[01m\033[04m{}\033[00m",
-	debug="[\033[01m\033[96m*  Deb\033[00m] {}",
+	debug="[\033[01m\033[96m$  Deb\033[00m] {}",
 	info="[\033[96m* Info\033[00m] {}", success="[\033[92m+   Ok\033[00m] {}",
 	warning="[\033[93m/ Warn\033[00m] {}", error="[\033[91m-  Err\033[00m] {}",
 	critical="[\033[01m\033[91m! Crit\033[00m] {}"):

@@ -25,6 +25,8 @@ from metprint import (
 metLogger = Logger(MeterpreterFormatter())
 metLogger.logPrint("none", LogType.NONE)
 metLogger.logPrint("bold", LogType.BOLD)
+metLogger.logPrint("italic", LogType.ITALIC)
+metLogger.logPrint("header", LogType.HEADER)
 metLogger.logPrint("debug", LogType.DEBUG)
 metLogger.logPrint("info", LogType.INFO)
 metLogger.logPrint("success", LogType.SUCCESS)
