@@ -222,8 +222,8 @@ class CustomFormatter():
 
 class Logger():
 	'''Setup a logger and call logPrint to print text in certian formats '''
-	def __init__(self, formatter):
-		self.formatter = formatter if formatter is not None else MeterpreterFormatter()
+	def __init__(self, formatter=MeterpreterFormatter()):
+		self.formatter = formatter
 
 	def logPrint(self, text, logType=LogType.NONE):
 		'''Print in the formatter style

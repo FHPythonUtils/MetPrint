@@ -1,9 +1,10 @@
+#!/usr/bin/env python3
 """Test metprint
 """
 from metprint import (
 	LogType,
 	Logger,
-	MeterpreterFormatter,
+	#MeterpreterFormatter,
 	FHFormatter,
 	FHNFFormatter,
 	PythonFormatter,
@@ -18,7 +19,7 @@ from metprint import (
 print("#########################")
 print("#      Meterpreter      #")
 print("#########################")
-metLogger = Logger(MeterpreterFormatter())
+metLogger = Logger()
 metLogger.logPrint("none", LogType.NONE)
 metLogger.logPrint("bold", LogType.BOLD)
 metLogger.logPrint("italic", LogType.ITALIC)

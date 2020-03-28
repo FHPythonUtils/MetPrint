@@ -7,7 +7,7 @@ with open("README.md", "r") as readme:
 
 setuptools.setup(
 	name="metprint",
-	version="2020.3",
+	version="2020.4",
 	author="FredHappyface",
 	description="Pretty print text in a range of builtin formats or make your own",
 	long_description=long_description,

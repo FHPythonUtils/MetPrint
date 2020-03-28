@@ -2,6 +2,9 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.4 - 2020/03/28
+- Use Logger without formatter defaults to MeterpreterFormatter
+
 ## 2020.3 - 2020/03/26
 - Colour improvements to MeterpreterFormatter, FHFormatter, FHNFFormatter,
 XaFormatter and LamuFormatter
