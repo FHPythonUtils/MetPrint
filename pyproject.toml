@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "metprint"
+version = "2020.5"
+description = "Pretty print text in a range of builtin formats or make your own"
+authors = ["FredHappyface"]
+classifiers = [
+	"Programming Language :: Python :: 3.5",
+	"Programming Language :: Python :: 3.6",
+	"Programming Language :: Python :: 3.7",
+	"Programming Language :: Python :: 3.8",
+	"Operating System :: OS Independent"
+]
+homepage = "https://github.com/FHPythonUtils/MetPrint"
+repository = "https://github.com/FHPythonUtils/MetPrint"
+documentation = "https://github.com/FHPythonUtils/MetPrint/blob/master/README.md"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.4"
+
+[tool.dephell.main]
+from = "pyproject.toml"
+to = "requirements.txt"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

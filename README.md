@@ -8,6 +8,7 @@
 [![PyPI Downloads](https://img.shields.io/pypi/dm/metprint.svg?style=for-the-badge)](https://pypi.org/project/metprint/)
 [![PyPI Version](https://img.shields.io/pypi/v/metprint.svg?style=for-the-badge)](https://pypi.org/project/metprint/)
 
+<!-- omit in TOC -->
 # MetPrint
 
 <img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
@@ -42,6 +43,29 @@ Output of test.py
 <img src="readme-assets/screenshots/desktop/screenshot-2.png" alt="Screenshot 3" width="300">
 </div>
 
+- [Install With PIP](#install-with-pip)
+- [Language information](#language-information)
+	- [Built for](#built-for)
+- [Install Python on Windows](#install-python-on-windows)
+	- [Chocolatey](#chocolatey)
+	- [Download](#download)
+- [Install Python on Linux](#install-python-on-linux)
+	- [Apt](#apt)
+- [How to run](#how-to-run)
+	- [With VSCode](#with-vscode)
+	- [From the Terminal](#from-the-terminal)
+- [How to update, build and publish](#how-to-update-build-and-publish)
+- [Download](#download-1)
+	- [Clone](#clone)
+		- [Using The Command Line](#using-the-command-line)
+		- [Using GitHub Desktop](#using-github-desktop)
+	- [Download Zip File](#download-zip-file)
+- [Community Files](#community-files)
+	- [Licence](#licence)
+	- [Changelog](#changelog)
+	- [Code of Conduct](#code-of-conduct)
+	- [Contributing](#contributing)
+	- [Security](#security)
 
 ## Install With PIP
 
@@ -82,6 +106,35 @@ Interpreter > Python 3.8)
 ```bash
 ./[file].py
 ```
+
+## How to update, build and publish
+
+1. Ensure you have installed the following dependencies
+	Linux
+	```bash
+	wget dephell.org/install | python3.8
+	wget https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3.8
+	```
+	Windows
+	```powershell
+	(wget dephell.org/install -UseBasicParsing).Content | python
+	(wget https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python
+	```
+2. Use poetry for the heavy lifting and dephell to generate requirements
+	```bash
+	poetry update
+	dephell deps convert
+	```
+3. Build/ Publish
+	```bash
+	poetry build
+	poetry publish
+	```
+	or
+	```bash
+	poetry publish --build
+	```
+
 
 ## Download
 ### Clone
