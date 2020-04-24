@@ -21,7 +21,7 @@ if os.path.exists(readme_path):
 setup(
     long_description=readme,
     name='metprint',
-    version='2020.5',
+    version='2020.6',
     description='Pretty print text in a range of builtin formats or make your own',
     python_requires='==3.*,>=3.4.0',
     project_urls={
@@ -34,6 +34,7 @@ setup(
     },
     author='FredHappyface',
     classifiers=[
+        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',

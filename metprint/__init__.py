@@ -2,6 +2,8 @@
 """
 # pylint: disable=too-few-public-methods
 
+import builtins
+
 from enum import Enum
 class LogType(Enum):
 	'''Contains logtypes for this module
@@ -242,3 +244,32 @@ class Logger():
 			logType (str, optional): How to print. Defaults to "LogType.NONE".
 		'''
 		return self.formatter.format[logType] .format(text)
+
+#pylint: disable=no-member
+"""
+Option to set donations
+"""
+if hasattr(builtins, "METPRINT_DONATIONS"
+) and len(builtins.METPRINT_DONATIONS) > 0:
+	print(str(len(builtins.METPRINT_DONATIONS)) + (" projects are" if len(
+		builtins.METPRINT_DONATIONS) > 1 else " project is") + " looking for funding:\n")
+	for project in builtins.METPRINT_DONATIONS:
+		print(project + ": " + builtins.METPRINT_DONATIONS[project])
+	print()
+
+"""
+Option to just print rather than dealing with setting up a new logger
+"""
+LAZY_FORMATTERS = {"MeterpreterFormatter": MeterpreterFormatter(),
+	"FHFormatter": FHFormatter(),
+	"FHNFFormatter": FHNFFormatter(),
+	"PythonFormatter": PythonFormatter(),
+	"ColorLogFormatter": ColorLogFormatter(),
+	"PrintTagsFormatter": PrintTagsFormatter(),
+	"XaFormatter": XaFormatter(),
+	"LamuFormatter": LamuFormatter()}
+if hasattr(builtins, "METPRINT_LAZY_FORMATTER"
+) and builtins.METPRINT_LAZY_FORMATTER in LAZY_FORMATTERS:
+	LAZY_PRINT = Logger(LAZY_FORMATTERS[builtins.METPRINT_LAZY_FORMATTER]).logPrint
+else:
+	LAZY_PRINT = Logger().logPrint

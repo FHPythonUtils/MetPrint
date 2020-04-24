@@ -43,6 +43,62 @@ Output of test.py
 <img src="readme-assets/screenshots/desktop/screenshot-2.png" alt="Screenshot 3" width="300">
 </div>
 
+Alternatively, you may prefer to make use of the `LAZY_PRINT` function.
+Set `builtins.METPRINT_LAZY_FORMATTER` to customize the formatter.
+
+Also, you have the option to show dependencies some love with
+`builtins.METPRINT_DONATIONS` add a dictionary of projects and the
+donations/ funding URL. Note that this is outputted on import.
+
+See below for example usage of these.
+```python
+#!/usr/bin/env python3
+"""Test metprint
+"""
+import builtins
+
+builtins.METPRINT_DONATIONS = {"Test": "Test URL"}
+builtins.METPRINT_LAZY_FORMATTER = "FHFormatter"
+
+from metprint import LAZY_PRINT, LogType
+
+print("#########################")
+print("#      FHFormatter      #")
+print("#########################")
+LAZY_PRINT("none", LogType.NONE)
+LAZY_PRINT("bold", LogType.BOLD)
+LAZY_PRINT("italic", LogType.ITALIC)
+LAZY_PRINT("header", LogType.HEADER)
+LAZY_PRINT("debug", LogType.DEBUG)
+LAZY_PRINT("info", LogType.INFO)
+LAZY_PRINT("success", LogType.SUCCESS)
+LAZY_PRINT("warning", LogType.WARNING)
+LAZY_PRINT("error", LogType.ERROR)
+LAZY_PRINT("critical", LogType.CRITICAL)
+```
+
+Output of lazytest.py (for simplicity this is the output copied from the
+terminal so note that the actual output contains colours as above)
+```none
+1 project is looking for funding:
+
+Test: Test URL
+
+#########################
+#      FHFormatter      #
+#########################
+none
+bold
+italic
+header
+[$  Deb] debug
+[* Info] info
+[+   Ok] success
+[/ Warn] warning
+[-  Err] error
+[! Crit] critical
+```
+
 - [Install With PIP](#install-with-pip)
 - [Language information](#language-information)
 	- [Built for](#built-for)

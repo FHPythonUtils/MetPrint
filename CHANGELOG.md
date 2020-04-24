@@ -2,6 +2,13 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.6 - 2020/04/24
+- New LAZY_PRINT function to make the lives of those who do not wish to
+initialize a logger just to print that bit easier.
+- Customize the LAZY_PRINT function with `builtins.METPRINT_LAZY_FORMATTER`
+- Show dependencies or your own project some love by setting a dictionary of
+projects and donation URLs to `builtins.METPRINT_DONATIONS`
+
 ## 2020.5 - 2020/04/19
 - Build with poetry and dephell
 
