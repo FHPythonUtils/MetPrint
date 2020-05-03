@@ -1,5 +1,5 @@
 [![Github top language](https://img.shields.io/github/languages/top/FHPythonUtils/MetPrint.svg?style=for-the-badge)](../../)
-[![Codacy grade](https://img.shields.io/codacy/grade/[codacy-proj-id].svg?style=for-the-badge)](https://www.codacy.com/manual/FHPythonUtils/MetPrint)
+[![Codacy grade](https://img.shields.io/codacy/grade/4361c2b314a94e77a69b674885d7393a.svg?style=for-the-badge)](https://www.codacy.com/manual/FHPythonUtils/MetPrint)
 [![Repository size](https://img.shields.io/github/repo-size/FHPythonUtils/MetPrint.svg?style=for-the-badge)](../../)
 [![Issues](https://img.shields.io/github/issues/FHPythonUtils/MetPrint.svg?style=for-the-badge)](../../issues)
 [![License](https://img.shields.io/github/license/FHPythonUtils/MetPrint.svg?style=for-the-badge)](/LICENSE.md)
