@@ -2,6 +2,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.6.1 - 2020/05/06
+- Updated classifiers
+- Added docs
+
 ## 2020.6 - 2020/04/24
 - New LAZY_PRINT function to make the lives of those who do not wish to
 initialize a logger just to print that bit easier.
