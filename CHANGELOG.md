@@ -2,6 +2,11 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.7 - 2020/10/11
+- Added typing (so dropping python < 3.7)
+- Added indent for 'plain' formats (None, Bold, Italic, and Header)
+- Updated docs
+
 ## 2020.6.1 - 2020/05/06
 - Updated classifiers
 - Added docs

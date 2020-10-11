@@ -1,12 +1,24 @@
 """Print in fancy ways
 """
 # pylint: disable=too-few-public-methods
-
+from __future__ import annotations
 import builtins
 
 from enum import Enum
 class LogType(Enum):
 	'''Contains logtypes for this module
+
+	NONE
+	No special formatting
+
+	BOLD
+	Bold text
+
+	ITALIC
+	Italic text
+
+	HEADER
+	Some form of heading
 
 	DEBUG
 	Detailed information, typically of interest only when diagnosing problems.
@@ -27,6 +39,9 @@ class LogType(Enum):
 	A serious error, indicating that the program itself may be unable to
 	continue running.
 
+	INDENT
+	Stores the indent for NONE, BOLD, ITALIC, HEADER
+
 	'''
 	NONE = 0
 	BOLD = 1
@@ -38,11 +53,20 @@ class LogType(Enum):
 	WARNING = 7
 	ERROR = 8
 	CRITICAL = 9
+	INDENT = 10
 
 
-class MeterpreterFormatter():
+class Formatter():
 	'''Format text in meterpreter style '''
 	def __init__(self):
+		self.format = {
+
+		}
+
+class MeterpreterFormatter(Formatter):
+	'''Format text in meterpreter style '''
+	def __init__(self):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "\033[01m{}\033[00m",
@@ -54,11 +78,13 @@ class MeterpreterFormatter():
 			LogType.WARNING : "\033[01m\033[33m[/]\033[00m {}",
 			LogType.ERROR   : "\033[01m\033[31m[-]\033[00m {}",
 			LogType.CRITICAL: "\033[01m\033[91m[!]\033[00m {}",
+			LogType.INDENT  : 4,
 		}
 
-class FHFormatter():
+class FHFormatter(Formatter):
 	'''Format text in my own style '''
 	def __init__(self):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "\033[01m{}\033[00m",
@@ -70,11 +96,13 @@ class FHFormatter():
 			LogType.WARNING : "[\033[33m/ Warn\033[00m] {}",
 			LogType.ERROR   : "[\033[31m-  Err\033[00m] {}",
 			LogType.CRITICAL: "[\033[01m\033[91m! Crit\033[00m] {}",
+			LogType.INDENT  : 9,
 		}
 
-class FHNFFormatter():
+class FHNFFormatter(Formatter):
 	'''Format text in my own style with nerd fonts'''
 	def __init__(self):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "\033[01m{}\033[00m",
@@ -86,11 +114,13 @@ class FHNFFormatter():
 			LogType.WARNING : "[\033[33m\uf467 Warn\033[00m] {}",
 			LogType.ERROR   : "[\033[31m\uf46e  Err\033[00m] {}",
 			LogType.CRITICAL: "[\033[01m\033[91m\uf421 Crit\033[00m] {}",
+			LogType.INDENT  : 9,
 		}
 
-class PythonFormatter():
+class PythonFormatter(Formatter):
 	'''Format text in my python logger style '''
 	def __init__(self):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "{}",
@@ -102,13 +132,15 @@ class PythonFormatter():
 			LogType.WARNING : "WARNING:{}",
 			LogType.ERROR   : "ERROR:{}",
 			LogType.CRITICAL: "CRITICAL:{}",
+			LogType.INDENT  : 4,
 		}
 
-class ColorLogFormatter():
+class ColorLogFormatter(Formatter):
 	'''Format text in colorlog style
 	https://github.com/borntyping/python-colorlog
 	'''
 	def __init__(self):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "\033[01m{}\033[00m",
@@ -120,14 +152,16 @@ class ColorLogFormatter():
 			LogType.WARNING : "\033[33mWARNING  \033[00m\033[34m{}\033[00m",
 			LogType.ERROR   : "\033[31mERROR    \033[00m\033[34m{}\033[00m",
 			LogType.CRITICAL: "\033[31mCRITICAL \033[00m\033[34m{}\033[00m",
+			LogType.INDENT  : 9,
 		}
 
-class PrintTagsFormatter():
+class PrintTagsFormatter(Formatter):
 	'''Format text in PrintTag style
 	https://github.com/mdlockyer/PrintTags
 	Note that this project provides other functionality that this one lacks
 	'''
 	def __init__(self):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "\033[01m{}\033[00m",
@@ -139,13 +173,15 @@ class PrintTagsFormatter():
 			LogType.WARNING : "\033[35m[warn] {}\033[00m",
 			LogType.ERROR   : "\033[31m[error] {}\033[00m",
 			LogType.CRITICAL: "\033[31m[critical] {}\033[00m",
+			LogType.INDENT  : 4,
 		}
 
-class XaFormatter():
+class XaFormatter(Formatter):
 	'''Format text in Xa style
 	https://github.com/xxczaki/xa
 	'''
 	def __init__(self):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "\033[01m{}\033[00m",
@@ -157,13 +193,15 @@ class XaFormatter():
 			LogType.WARNING : "\033[01m\033[43m\033[30m WARNING \033[00m {}",
 			LogType.ERROR   : "\033[01m\033[41m\033[30m ERROR \033[00m {}",
 			LogType.CRITICAL: "\033[01m\033[101m\033[30m CRITICAL \033[00m {}",
+			LogType.INDENT  : 4,
 		}
 
-class LamuFormatter():
+class LamuFormatter(Formatter):
 	'''Format text in Lamu style
 	https://github.com/egoist/lamu
 	'''
 	def __init__(self):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE    : "{}",
 			LogType.BOLD    : "\033[01m{}\033[00m",
@@ -175,9 +213,10 @@ class LamuFormatter():
 			LogType.WARNING : "\033[33m warning\033[00m  : :  {}",
 			LogType.ERROR   : "\033[31m   error\033[00m  : :  {}",
 			LogType.CRITICAL: "\033[91mcritical\033[00m  : :  {}",
+			LogType.INDENT  : 15,
 		}
 
-class CustomFormatter():
+class CustomFormatter(Formatter):
 	"""Create a custom formatter
 
 	Args:
@@ -201,13 +240,16 @@ class CustomFormatter():
 		Defaults to "[\033[91m-  Err\033[00m] {}".
 		critical (str, optional): Set format for LogType.CRITICAL.
 		Defaults to "[\033[01m\033[91m! Crit\033[00m] {}".
+		indentPlain (int, optional): Set indent for 'plain' formats (None,
+		Bold, Italic, and Header). Defaults to 9
 	"""
-	def __init__(self, none="{}", bold="\033[01m{}\033[00m",
-	italic="\033[03m{}\033[00m", header="\033[01m\033[04m{}\033[00m",
-	debug="[\033[01m\033[96m$  Deb\033[00m] {}",
-	info="[\033[36m* Info\033[00m] {}", success="[\033[32m+   Ok\033[00m] {}",
-	warning="[\033[33m/ Warn\033[00m] {}", error="[\033[31m-  Err\033[00m] {}",
-	critical="[\033[01m\033[91m! Crit\033[00m] {}"):
+	def __init__(self, none:str="{}", bold:str="\033[01m{}\033[00m",
+	italic:str="\033[03m{}\033[00m", header:str="\033[01m\033[04m{}\033[00m",
+	debug:str="[\033[01m\033[96m$  Deb\033[00m] {}",
+	info:str="[\033[36m* Info\033[00m] {}", success:str="[\033[32m+   Ok\033[00m] {}",
+	warning:str="[\033[33m/ Warn\033[00m] {}", error:str="[\033[31m-  Err\033[00m] {}",
+	critical:str="[\033[01m\033[91m! Crit\033[00m] {}", indentPlain:int=9):
+		Formatter.__init__(self)
 		self.format = {
 			LogType.NONE: none,
 			LogType.BOLD: bold,
@@ -219,42 +261,53 @@ class CustomFormatter():
 			LogType.WARNING: warning,
 			LogType.ERROR: error,
 			LogType.CRITICAL: critical,
+			LogType.INDENT: indentPlain,
 		}
 
 
 class Logger():
 	'''Setup a logger and call logPrint to print text in certian formats '''
-	def __init__(self, formatter=MeterpreterFormatter()):
+	def __init__(self, formatter: Formatter=MeterpreterFormatter()):
 		self.formatter = formatter
 
-	def logPrint(self, text, logType=LogType.NONE):
+	def logPrint(self, text: str, logType: LogType=LogType.NONE, indentPlain:bool=False):
 		'''Print in the formatter style
 
 		Args:
 			text (str): Text to print
-			logType (str, optional): How to print. Defaults to "LogType.NONE".
+			logType (LogType, optional): How to print. Defaults to "LogType.NONE".
+			indentPlain (bool, optional): Indent for 'plain' formats (None,
+			Bold, Italic, and Header). Defaults to False
 		'''
-		print(self.formatter.format[logType] .format(text))
+		print(self.logString(text, logType, indentPlain))
 
-	def logString(self, text, logType=LogType.NONE):
+	def logString(self, text: str, logType: LogType=LogType.NONE, indentPlain:bool=False) -> str:
 		'''Get a string in the formatter style
 
 		Args:
 			text (str): Text to print
-			logType (str, optional): How to print. Defaults to "LogType.NONE".
+			logType (LogType, optional): How to print. Defaults to "LogType.NONE".
+			indentPlain (bool, optional): Indent for 'plain' formats (None,
+			Bold, Italic, and Header). Defaults to False
 		'''
-		return self.formatter.format[logType] .format(text)
+		padding = ""
+		if logType in [LogType.NONE, LogType.BOLD, LogType.ITALIC, LogType.HEADER] and indentPlain:
+			padding = " " * int(self.formatter.format[LogType.INDENT])
+		return padding + str(self.formatter.format[logType].format(text))
 
-#pylint: disable=no-member
+# pylint: disable=no-member
+# pyright: reportUnknownMemberType=false, reportUnknownArgumentType=false
+# pyright: reportGeneralTypeIssues=false
 """
 Option to set donations
 """
 if hasattr(builtins, "METPRINT_DONATIONS"
 ) and len(builtins.METPRINT_DONATIONS) > 0:
-	print(str(len(builtins.METPRINT_DONATIONS)) + (" projects are" if len(
-		builtins.METPRINT_DONATIONS) > 1 else " project is") + " looking for funding:\n")
-	for project in builtins.METPRINT_DONATIONS:
-		print(project + ": " + builtins.METPRINT_DONATIONS[project])
+	metprintDonations: dict[str, str] = builtins.METPRINT_DONATIONS
+	print(str(len(metprintDonations)) + (" projects are" if len(
+		metprintDonations) > 1 else " project is") + " looking for funding:\n")
+	for project in metprintDonations:
+		print(project + ": " + metprintDonations[project])
 	print()
 
 """
@@ -272,4 +325,4 @@ if hasattr(builtins, "METPRINT_LAZY_FORMATTER"
 ) and builtins.METPRINT_LAZY_FORMATTER in LAZY_FORMATTERS:
 	LAZY_PRINT = Logger(LAZY_FORMATTERS[builtins.METPRINT_LAZY_FORMATTER]).logPrint
 else:
-	LAZY_PRINT = Logger().logPrint
+	LAZY_PRINT = Logger().logPrint # type: ignore

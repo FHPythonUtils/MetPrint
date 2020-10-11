@@ -25,8 +25,8 @@ from metprint import (
 
 metLogger = Logger(MeterpreterFormatter())
 metLogger.logPrint("none", LogType.NONE)
-metLogger.logPrint("bold", LogType.BOLD)
-metLogger.logPrint("italic", LogType.ITALIC)
+metLogger.logPrint("bold indent", LogType.BOLD, True)
+metLogger.logPrint("italic indent", LogType.ITALIC, True)
 metLogger.logPrint("header", LogType.HEADER)
 metLogger.logPrint("debug", LogType.DEBUG)
 metLogger.logPrint("info", LogType.INFO)
@@ -38,9 +38,7 @@ metLogger.logPrint("critical", LogType.CRITICAL)
 
 Output of test.py
 <div>
-<img src="readme-assets/screenshots/desktop/screenshot-0.png" alt="Screenshot 1" width="300">
-<img src="readme-assets/screenshots/desktop/screenshot-1.png" alt="Screenshot 2" width="300">
-<img src="readme-assets/screenshots/desktop/screenshot-2.png" alt="Screenshot 3" width="300">
+<img src="readme-assets/screenshots/desktop/screenshot-0.svg" alt="Screenshot 1" width="500">
 </div>
 
 Alternatively, you may prefer to make use of the `LAZY_PRINT` function.

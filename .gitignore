@@ -1,5 +1,6 @@
 poetry.lock
 README.rst
+requirements_optional.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
