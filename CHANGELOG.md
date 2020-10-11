@@ -2,6 +2,9 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.7.1 - 2020/10/11
+- Actually drop the versions in pyproject.toml
+
 ## 2020.7 - 2020/10/11
 - Added typing (so dropping python < 3.7)
 - Added indent for 'plain' formats (None, Bold, Italic, and Header)
